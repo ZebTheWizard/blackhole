@@ -8,36 +8,59 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "EditorProperty",
+"class": "IntEditor",
+"language": "GDScript",
+"path": "res://addons/round_editor/IntEditor.gd"
+}, {
+"base": "Node",
+"class": "WaveData",
+"language": "GDScript",
+"path": "res://addons/round_editor/Wave.gd"
+} ]
 _global_script_class_icons={
-
+"IntEditor": "",
+"WaveData": ""
 }
 
 [application]
 
 config/name="Black Hole"
-run/main_scene="res://Node2D.tscn"
-boot_splash/bg_color=Color( 1, 0, 0, 1 )
+run/main_scene="res://Scenes/Gameplay.tscn"
+boot_splash/image="res://icons/120w/Asset 7_120.png"
+boot_splash/bg_color=Color( 0, 0, 0, 1 )
 config/icon="res://icons/1024w/Asset 7_1024.png"
 
-[debug]
+[autoload]
 
-settings/stdout/print_fps=true
+Store="*res://Scenes/Store/Store.gd"
+State="*res://Scenes/Store/State.gd"
+h="*res://Scenes/Store/Helpers.gd"
+_Actions="*res://Scenes/Store/Actions.gd"
 
 [display]
 
 window/size/width=1080
 window/size/height=1920
-window/size/always_on_top=true
 window/size/test_width=270
 window/size/test_height=480
+window/dpi/allow_hidpi=true
 window/handheld/orientation="portrait"
 window/stretch/mode="viewport"
 window/stretch/aspect="keep"
 
+[editor_plugins]
+
+enabled=PoolStringArray( "ResolutionManager", "main_screen", "round_editor" )
+
 [gdnative]
 
 singletons=[  ]
+
+[gui]
+
+theme/use_hidpi=true
 
 [input_devices]
 
@@ -45,5 +68,8 @@ pointing/emulate_touch_from_mouse=true
 
 [rendering]
 
+quality/driver/fallback_to_gles2=true
+threads/thread_model=2
+vram_compression/import_etc=true
 environment/default_clear_color=Color( 0, 0, 0, 1 )
 environment/default_environment="res://default_env.tres"
